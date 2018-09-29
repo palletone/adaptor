@@ -29,6 +29,8 @@ type AdaptorBTC struct {
 	RPCParams
 }
 
+type NetID int
+
 const (
 	NETID_MAIN = iota
 	NETID_TEST
@@ -100,7 +102,7 @@ type GetTransactionByHashParams struct {
 }
 type GetTransactionByHashResult struct {
 	Inputs  []Input  `json:"inputs"`
-	Outputs []output `json:"outputs"`
+	Outputs []OutputIndex `json:"outputs"`
 }
 
 //
@@ -150,25 +152,25 @@ type GetTransactionsParams struct {
 	Skip    int    `json:"skip"`
 }
 
-type input struct {
+type InputIndex struct {
 	TxHash string `json:"txHash"`
 	Index  uint32 `json:"index"`
 	Addr   string `json:"addr"`
 	Value  int64  `json:"value"`
 }
-type output struct {
+type OutputIndex struct {
 	Index uint32 `json:"index"`
 	Addr  string `json:"addr"`
 	Value int64  `json:"value"` //satoshi
 }
-type transaction struct {
+type Transaction struct {
 	TxHash        string   `json:"txHash"`
 	BlanceChanged int64    `json:"blanceChanged"`
-	Inputs        []input  `json:"inputs"`
-	Outputs       []output `json:"outputs"`
+	Inputs        []InputIndex  `json:"inputs"`
+	Outputs       []OutputIndex `json:"outputs"`
 }
-type transactionsResult struct {
-	Transactions []transaction `json:"transactions"`
+type TransactionsResult struct {
+	Transactions []Transaction `json:"transactions"`
 }
 
 //
