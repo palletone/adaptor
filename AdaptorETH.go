@@ -17,20 +17,6 @@
  */
 package adaptor
 
-type ETHRPCParams struct {
-	Rawurl string `json:"rawurl"`
-}
-
-type AdaptorETH struct {
-	NetID int
-	RPCParams
-}
-
-//const (
-//	NETID_MAIN = iota
-//	NETID_TEST
-//)
-
 type adaptereth interface {
 	NewPrivateKey() (prikeyHex string)
 	GetPublicKey(prikeyHex string) (pubKey string)

@@ -17,25 +17,6 @@
  */
 package adaptor
 
-type RPCParams struct {
-	Host      string `json:"host"`
-	RPCUser   string `json:"rpcUser"`
-	RPCPasswd string `json:"rpcPasswd"`
-	CertPath  string `json:"certPath"`
-}
-
-type AdaptorBTC struct {
-	NetID int
-	RPCParams
-}
-
-type NetID int
-
-const (
-	NETID_MAIN = iota
-	NETID_TEST
-)
-
 type adapterbtc interface {
 	NewPrivateKey() (wifPriKey string)
 	GetPublicKey(wifPriKey string) (pubKey string)
@@ -101,7 +82,7 @@ type GetTransactionByHashParams struct {
 	TxHash string `json:"txhash"`
 }
 type GetTransactionByHashResult struct {
-	Inputs  []Input  `json:"inputs"`
+	Inputs  []Input       `json:"inputs"`
 	Outputs []OutputIndex `json:"outputs"`
 }
 
@@ -164,8 +145,8 @@ type OutputIndex struct {
 	Value int64  `json:"value"` //satoshi
 }
 type Transaction struct {
-	TxHash        string   `json:"txHash"`
-	BlanceChanged int64    `json:"blanceChanged"`
+	TxHash        string        `json:"txHash"`
+	BlanceChanged int64         `json:"blanceChanged"`
 	Inputs        []InputIndex  `json:"inputs"`
 	Outputs       []OutputIndex `json:"outputs"`
 }
