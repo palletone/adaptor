@@ -69,7 +69,7 @@ type Input struct {
 }
 type Output struct {
 	Address string  `json:"address"`
-	Amount  float64 `json:"amount"`
+	Amount  float64 `json:"amount"` //btc
 }
 type DecodeRawTransactionResult struct {
 	Inputs   []Input  `json:"inputs"`
@@ -123,7 +123,7 @@ type GetBalanceParams struct {
 	Minconf int    `json:"minconf"`
 }
 type GetBalanceResult struct {
-	Value float64 `json:"value"`
+	Value float64 `json:"value"` //btc
 }
 
 //
@@ -137,7 +137,7 @@ type InputIndex struct {
 	TxHash string `json:"txHash"`
 	Index  uint32 `json:"index"`
 	Addr   string `json:"addr"`
-	Value  int64  `json:"value"`
+	Value  int64  `json:"value"` //satoshi
 }
 type OutputIndex struct {
 	Index uint32 `json:"index"`
@@ -146,7 +146,7 @@ type OutputIndex struct {
 }
 type Transaction struct {
 	TxHash        string        `json:"txHash"`
-	BlanceChanged int64         `json:"blanceChanged"`
+	BlanceChanged int64         `json:"blanceChanged"` //satoshi
 	Inputs        []InputIndex  `json:"inputs"`
 	Outputs       []OutputIndex `json:"outputs"`
 }
