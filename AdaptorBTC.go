@@ -33,7 +33,6 @@ type adapterbtc interface {
 
 	GetBalance(params *GetBalanceParams) (string, error)
 	GetTransactions(params *GetTransactionsParams) (string, error)
-	ImportMultisig(params *ImportMultisigParams) (string, error)
 	SendTransaction(params string) string
 }
 
@@ -152,16 +151,6 @@ type Transaction struct {
 }
 type TransactionsResult struct {
 	Transactions []Transaction `json:"transactions"`
-}
-
-//
-type ImportMultisigParams struct {
-	PublicKeys   []string `json:"publicKeys"`
-	MRequires    int      `json:"mRequires"`
-	WalletPasswd string   `json:"walletPasswd"`
-}
-type ImportMultisigResult struct {
-	Import bool `json:"import"`
 }
 
 /* not used current
