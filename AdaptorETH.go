@@ -74,10 +74,11 @@ type ETHSignTransactionResult struct {
 
 //
 type QueryContractParams struct {
-	ContractABI  string `json:"contractABI"`
-	ContractAddr string `json:"contractAddr"`
-	Method       string `json:"method"`
-	Params       string `json:"params"`
+	ContractABI  string        `json:"contractABI"`
+	ContractAddr string        `json:"contractAddr"`
+	Method       string        `json:"method"`
+	Params       string        `json:"params"`
+	ParamsArray  []interface{} `json:"paramsarray"`
 }
 type QueryContractResult struct {
 	Result string `json:"result"`
@@ -85,14 +86,15 @@ type QueryContractResult struct {
 
 //
 type GenInvokeContractTXParams struct {
-	ContractABI  string `json:"contractabi"`
-	ContractAddr string `json:"contractaddr"`
-	CallerAddr   string `json:"calleraddr"`
-	Value        string `json:"value"`
-	GasPrice     string `json:"gasprice"`
-	GasLimit     string `json:"gaslimit"`
-	Method       string `json:"method"`
-	Params       string `json:"params"`
+	ContractABI  string        `json:"contractabi"`
+	ContractAddr string        `json:"contractaddr"`
+	CallerAddr   string        `json:"calleraddr"`
+	Value        string        `json:"value"`
+	GasPrice     string        `json:"gasprice"`
+	GasLimit     string        `json:"gaslimit"`
+	Method       string        `json:"method"`
+	Params       string        `json:"params"`
+	ParamsArray  []interface{} `json:"paramsarray"`
 }
 type GenInvokeContractTXResult struct {
 	TransactionHex string `json:"transactionhex"`
@@ -100,13 +102,14 @@ type GenInvokeContractTXResult struct {
 
 //
 type GenDeployContractTXParams struct {
-	ContractABI  string `json:"contractabi"`
-	ContractBin  string `json:"contractbin"`
-	DeployerAddr string `json:"deployeraddr"`
-	Value        string `json:"value"`
-	GasPrice     string `json:"gasprice"`
-	GasLimit     string `json:"gaslimit"`
-	Params       string `json:"params"`
+	ContractABI  string        `json:"contractabi"`
+	ContractBin  string        `json:"contractbin"`
+	DeployerAddr string        `json:"deployeraddr"`
+	Value        string        `json:"value"`
+	GasPrice     string        `json:"gasprice"`
+	GasLimit     string        `json:"gaslimit"`
+	Params       string        `json:"params"`
+	ParamsArray  []interface{} `json:"paramsarray"`
 }
 type GenDeployContractTXResult struct {
 	TransactionHex string `json:"transactionhex"`
