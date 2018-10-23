@@ -33,6 +33,7 @@ type adaptereth interface {
 	GenDeployContractTX(params *GenDeployContractTXParams) (string, error)
 
 	GetEventByAddress(params *GetEventByAddressParams) (string, error)
+	GetBestHeader(params *GetBestHeaderParams) (string, error)
 }
 
 //
@@ -125,9 +126,17 @@ type GetEventByAddressParams struct {
 	EndHeight    string `json:"endheight"`
 	EventName    string `json:"eventname"`
 }
-
 type GetEventByAddressResult struct {
 	Events []string `json:"events"`
+}
+
+//
+type GetBestHeaderParams struct {
+	Number string `json:"Number"` //if empty, return the best header
+}
+type GetBestHeaderResult struct {
+	TxHash string `json:"txhash"`
+	Number string `json:"number"`
 }
 
 /* not used current
