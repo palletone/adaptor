@@ -81,8 +81,10 @@ type GetTransactionByHashParams struct {
 	TxHash string `json:"txhash"`
 }
 type GetTransactionByHashResult struct {
-	Inputs  []Input       `json:"inputs"`
-	Outputs []OutputIndex `json:"outputs"`
+	Txid     string        `json:"txid"`
+	Confirms uint64        `json:"confirms"`
+	Inputs   []Input       `json:"inputs"`
+	Outputs  []OutputIndex `json:"outputs"`
 }
 
 //
@@ -133,19 +135,20 @@ type GetTransactionsParams struct {
 }
 
 type InputIndex struct {
-	TxHash string `json:"txHash"`
-	Index  uint32 `json:"index"`
-	Addr   string `json:"addr"`
-	Value  int64  `json:"value"` //satoshi
+	TxHash string  `json:"txHash"`
+	Index  uint32  `json:"index"`
+	Addr   string  `json:"addr"`
+	Value  float64 `json:"value"` //btc
 }
 type OutputIndex struct {
-	Index uint32 `json:"index"`
-	Addr  string `json:"addr"`
-	Value int64  `json:"value"` //satoshi
+	Index uint32  `json:"index"`
+	Addr  string  `json:"addr"`
+	Value float64 `json:"value"` //btc
 }
 type Transaction struct {
 	TxHash        string        `json:"txHash"`
-	BlanceChanged int64         `json:"blanceChanged"` //satoshi
+	BlanceChanged float64       `json:"blanceChanged"` //btc
+	Confirms      uint64        `json:"confirms"`
 	Inputs        []InputIndex  `json:"inputs"`
 	Outputs       []OutputIndex `json:"outputs"`
 }
@@ -162,8 +165,8 @@ type GetUTXOParams struct {
 	MaximumCount int      `json:"maximumCount"`
 }
 
-func (abtc AdaptorBTC) GetUnspendUTXO(params string) string {
-	return GetUnspendUTXO(params, &abtc.RPCParams, abtc.NetID)
+func (abtc AdaptorBTC) GetUTXO(params string) string {
+	return GetUTXO(params, &abtc.RPCParams, abtc.NetID)
 }
 
 */
