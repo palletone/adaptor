@@ -30,6 +30,7 @@ type adapterbtc interface {
 
 	SignTransaction(params *SignTransactionParams) (string, error)
 	SignTxSend(params *SignTxSendParams) (string, error)
+	MergeTransaction(params *MergeTransactionParams) (string, error)
 
 	GetBalance(params *GetBalanceParams) (string, error)
 	GetTransactions(params *GetTransactionsParams) (string, error)
@@ -114,6 +115,17 @@ type SignTxSendParams struct {
 }
 type SignTxSendResult struct {
 	TransactionHah string `json:"transactionhash"`
+	Complete       bool   `json:"complete"`
+	TransactionHex string `json:"transactionhex"`
+}
+
+//
+type MergeTransactionParams struct {
+	UserTransactionHex   string   `json:"usertransactionhex"`
+	MergeTransactionHexs []string `json:"mergetransactionhexs"`
+	RedeemHex            string   `json:"redeemhex"`
+}
+type MergeTransactionResult struct {
 	Complete       bool   `json:"complete"`
 	TransactionHex string `json:"transactionhex"`
 }
