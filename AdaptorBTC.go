@@ -92,6 +92,7 @@ type GetTransactionByHashResult struct {
 type SignTransactionParams struct {
 	TransactionHex string   `json:"transactionhex"`
 	RedeemHex      string   `json:"redeemhex"`
+	FromAddr       string   `json:"fromaddr"`
 	Privkeys       []string `json:"privkeys"` //wif private keys
 }
 type SignTransactionResult struct {
@@ -111,6 +112,7 @@ type SendTransactionResult struct {
 type SignTxSendParams struct {
 	TransactionHex string   `json:"transactionhex"`
 	RedeemHex      string   `json:"redeemhex"`
+	FromAddr       string   `json:"fromaddr"`
 	Privkeys       []string `json:"privkeys"` //wif private keys
 }
 type SignTxSendResult struct {
