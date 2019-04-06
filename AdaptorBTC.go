@@ -27,6 +27,7 @@ type adapterbtc interface {
 	RawTransactionGen(params *RawTransactionGenParams) (string, error)
 	DecodeRawTransaction(params *DecodeRawTransactionParams) (string, error)
 	GetTransactionByHash(params *GetTransactionByHashParams) (string, error)
+	GetTransactionHttp(getTransactionByHashParams *GetTransactionHttpParams, netID int) (string, error)
 
 	SignTransaction(params *SignTransactionParams) (string, error)
 	SignTxSend(params *SignTxSendParams) (string, error)
@@ -35,9 +36,13 @@ type adapterbtc interface {
 	SignMessage(signMessageParams *SignMessageParams) (string, error)
 	VerifyMessage(verifyMessageParams *VerifyMessageParams) (string, error)
 
+	GetUTXO(params string) string //
+	GetUTXOHttp(params *GetUTXOHttpParams, netID int) (string, error)
+
 	GetBalance(params *GetBalanceParams) (string, error)
 	GetTransactions(params *GetTransactionsParams) (string, error)
-	SendTransaction(params string) string
+	SendTransaction(params string) string //
+	SendTransactionHttp(sendTransactionParams *SendTransactionHttpParams, netID int) (string, error)
 }
 
 //
@@ -92,6 +97,17 @@ type GetTransactionByHashResult struct {
 }
 
 //
+type GetTransactionHttpParams struct {
+	TxHash string `json:"txhash"`
+}
+type GetTransactionHttpResult struct {
+	Txid     string        `json:"txid"`
+	Confirms uint64        `json:"confirms"`
+	Inputs   []Input       `json:"inputs"`
+	Outputs  []OutputIndex `json:"outputs"`
+}
+
+//
 type SignTransactionParams struct {
 	TransactionHex string   `json:"transactionhex"`
 	RedeemHex      string   `json:"redeemhex"`
@@ -108,6 +124,14 @@ type SendTransactionParams struct {
 	TransactionHex string `json:"transactionhex"`
 }
 type SendTransactionResult struct {
+	TransactionHah string `json:"transactionhash"`
+}
+
+//
+type SendTransactionHttpParams struct {
+	TransactionHex string `json:"transactionhex"`
+}
+type SendTransactionHttpResult struct {
 	TransactionHah string `json:"transactionhash"`
 }
 
@@ -152,6 +176,34 @@ type VerifyMessageParams struct {
 }
 type VerifyMessageResult struct {
 	Valid bool `json:"valid"`
+}
+
+//
+type UTXO struct {
+	TxID     string  `json:"txid"`
+	Vout     uint32  `json:"vout"`
+	Amount   float64 `json:"amount"`
+	Confirms uint64  `json:"confirms"`
+}
+
+//
+type GetUTXOParams struct {
+	Address      string `json:"address"`
+	Minconf      int    `json:"minconf"`
+	Maxconf      int    `json:"maxconf"`
+	MaximumCount int    `json:"maximumCount"`
+}
+type GetUTXOResult struct {
+	UTXOs []UTXO `json:"utxos"`
+}
+
+//
+type GetUTXOHttpParams struct {
+	Address string `json:"address"`
+	Txid    string `json:"txid"`
+}
+type GetUTXOHttpResult struct {
+	UTXOs []UTXO `json:"utxos"`
 }
 
 //
