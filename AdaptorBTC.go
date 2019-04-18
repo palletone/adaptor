@@ -74,6 +74,7 @@ type DecodeRawTransactionParams struct {
 type Input struct {
 	Txid string `json:"txid"`
 	Vout uint32 `json:"vout"`
+	Addr string `json:"addr"`
 }
 type Output struct {
 	Address string  `json:"address"`
@@ -111,7 +112,7 @@ type GetTransactionHttpResult struct {
 type SignTransactionParams struct {
 	TransactionHex string   `json:"transactionhex"`
 	RedeemHex      string   `json:"redeemhex"`
-	FromAddr       string   `json:"fromaddr"`
+	FromAddr       string   `json:"fromaddr"` //empty when spend from MultiAddr
 	Privkeys       []string `json:"privkeys"` //wif private keys
 }
 type SignTransactionResult struct {
