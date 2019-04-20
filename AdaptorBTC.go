@@ -110,10 +110,11 @@ type GetTransactionHttpResult struct {
 
 //
 type SignTransactionParams struct {
-	TransactionHex string   `json:"transactionhex"`
-	RedeemHex      string   `json:"redeemhex"`
-	FromAddr       string   `json:"fromaddr"` //empty when spend from MultiAddr
-	Privkeys       []string `json:"privkeys"` //wif private keys
+	TransactionHex   string   `json:"transactionhex"`
+	InputRedeemIndex []int    `json:"inputredeemindex"`
+	RedeemHex        []string `json:"redeemhex"`
+	FromAddr         string   `json:"fromaddr"` //empty when spend from MultiAddr
+	Privkeys         []string `json:"privkeys"` //wif private keys
 }
 type SignTransactionResult struct {
 	Complete       bool   `json:"complete"`
@@ -138,10 +139,11 @@ type SendTransactionHttpResult struct {
 
 //
 type SignTxSendParams struct {
-	TransactionHex string   `json:"transactionhex"`
-	RedeemHex      string   `json:"redeemhex"`
-	FromAddr       string   `json:"fromaddr"`
-	Privkeys       []string `json:"privkeys"` //wif private keys
+	TransactionHex   string   `json:"transactionhex"`
+	InputRedeemIndex []int    `json:"inputredeemindex"`
+	RedeemHex        []string `json:"redeemhex"`
+	FromAddr         string   `json:"fromaddr"`
+	Privkeys         []string `json:"privkeys"` //wif private keys
 }
 type SignTxSendResult struct {
 	TransactionHah string `json:"transactionhash"`
@@ -153,7 +155,8 @@ type SignTxSendResult struct {
 type MergeTransactionParams struct {
 	UserTransactionHex   string   `json:"usertransactionhex"`
 	MergeTransactionHexs []string `json:"mergetransactionhexs"`
-	RedeemHex            string   `json:"redeemhex"`
+	InputRedeemIndex     []int    `json:"inputredeemindex"`
+	RedeemHex            []string `json:"redeemhex"`
 }
 type MergeTransactionResult struct {
 	Complete       bool   `json:"complete"`
