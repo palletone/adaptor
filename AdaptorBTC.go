@@ -220,6 +220,15 @@ type GetBalanceResult struct {
 }
 
 //
+type GetBalanceHttpParams struct {
+	Address string `json:"address"`
+	Minconf int    `json:"minconf"`
+}
+type GetBalanceHttpResult struct {
+	Value float64 `json:"value"` //btc
+}
+
+//
 type GetTransactionsParams struct {
 	Account string `json:"account"`
 	Count   int    `json:"count"`
