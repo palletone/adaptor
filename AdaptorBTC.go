@@ -159,8 +159,9 @@ type MergeTransactionParams struct {
 	RedeemHex            []string `json:"redeemhex"`
 }
 type MergeTransactionResult struct {
-	Complete       bool   `json:"complete"`
-	TransactionHex string `json:"transactionhex"`
+	Complete        bool   `json:"complete"`
+	TransactionHash string `json:"transactionhash"`
+	TransactionHex  string `json:"transactionhex"`
 }
 
 //
