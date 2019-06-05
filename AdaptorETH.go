@@ -127,7 +127,9 @@ type GetEventByAddressParams struct {
 	EventName    string `json:"eventname"`
 }
 type GetEventByAddressResult struct {
-	Events []string `json:"events"`
+	Events    []string `json:"events"`
+	Txhashs   []string `json:"txhashs"`
+	Blocknums []uint64 `json:"blocknums"`
 }
 
 //
