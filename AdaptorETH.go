@@ -53,7 +53,29 @@ type Keccak256HashPackedSigParams struct {
 	Params        string `json:"params"`
 }
 type Keccak256HashPackedSigResult struct {
+	Hash      string `json:"hash"`
 	Signature string `json:"signature"`
+}
+
+//
+type Keccak256HashVerifyParams struct {
+	PublicKeyHex string `json:"publickeyhex"`
+	Hash         string `json:"hash"`
+	Signature    string `json:"signature"`
+}
+
+type Keccak256HashVerifyResult struct {
+	Valid bool `json:"valid"`
+}
+
+//
+type RecoverParams struct {
+	Hash      string `json:"hash"`
+	Signature string `json:"signature"`
+}
+
+type RecoverResult struct {
+	Addr string `json:"addr"`
 }
 
 //not same as btc, members
