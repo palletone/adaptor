@@ -24,6 +24,7 @@ type adaptereth interface {
 
 	CreateMultiSigAddress(params *CreateMultiSigAddressParams) (string, error)
 	Keccak256HashPackedSig(params *Keccak256HashPackedSigParams) (string, error)
+	RecoverAddr(params *RecoverParams) (string, error)
 
 	SignTransaction(params *ETHSignTransactionParams) (string, error) //not same as btc, members
 	SendTransaction(params *SendTransactionParams) (string, error)    //same as btc
