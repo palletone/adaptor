@@ -36,12 +36,12 @@ type adapterbtc interface {
 	SignMessage(signMessageParams *SignMessageParams) (string, error)
 	VerifyMessage(verifyMessageParams *VerifyMessageParams) (string, error)
 
-	GetUTXO(params string) string //
+	GetUTXO(params *GetUTXOParams) string
 	GetUTXOHttp(params *GetUTXOHttpParams) (string, error)
 
 	GetBalance(params *GetBalanceParams) (string, error)
 	GetTransactions(params *GetTransactionsParams) (string, error)
-	SendTransaction(params string) string //
+	SendTransaction(params *SendTransactionParams) string
 	SendTransactionHttp(sendTransactionParams *SendTransactionHttpParams) (string, error)
 }
 
