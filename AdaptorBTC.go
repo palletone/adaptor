@@ -22,12 +22,12 @@ type adapterbtc interface {
 	GetPublicKey(wifPriKey string) (pubKey string)
 	GetAddress(wifPriKey string) (address string)
 	GetAddressByPubkey(pubKeyHex string) (string, error)
-	CreateMultiSigAddress(params *CreateMultiSigParams)
+	CreateMultiSigAddress(params *CreateMultiSigParams) (string, error)
 
 	RawTransactionGen(params *RawTransactionGenParams) (string, error)
 	DecodeRawTransaction(params *DecodeRawTransactionParams) (string, error)
 	GetTransactionByHash(params *GetTransactionByHashParams) (string, error)
-	GetTransactionHttp(getTransactionByHashParams *GetTransactionHttpParams, netID int) (string, error)
+	GetTransactionHttp(getTransactionByHashParams *GetTransactionHttpParams) (string, error)
 
 	SignTransaction(params *SignTransactionParams) (string, error)
 	SignTxSend(params *SignTxSendParams) (string, error)
@@ -37,12 +37,12 @@ type adapterbtc interface {
 	VerifyMessage(verifyMessageParams *VerifyMessageParams) (string, error)
 
 	GetUTXO(params string) string //
-	GetUTXOHttp(params *GetUTXOHttpParams, netID int) (string, error)
+	GetUTXOHttp(params *GetUTXOHttpParams) (string, error)
 
 	GetBalance(params *GetBalanceParams) (string, error)
 	GetTransactions(params *GetTransactionsParams) (string, error)
 	SendTransaction(params string) string //
-	SendTransactionHttp(sendTransactionParams *SendTransactionHttpParams, netID int) (string, error)
+	SendTransactionHttp(sendTransactionParams *SendTransactionHttpParams) (string, error)
 }
 
 //
