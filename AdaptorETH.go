@@ -34,6 +34,10 @@ type adaptereth interface {
 	GenDeployContractTX(params *GenDeployContractTXParams) (string, error)
 
 	GetEventByAddress(params *GetEventByAddressParams) (string, error)
+
+	GetTransactionByHash(params *GetTransactionParams) (string, error)
+	GetErc20TxByHash(params *GetErc20TxByHashParams) (string, error)
+
 	GetBestHeader(params *GetBestHeaderParams) (string, error)
 }
 
@@ -156,6 +160,38 @@ type GetEventByAddressResult struct {
 }
 
 //
+type GetTransactionParams struct {
+	Hash string `json:"hash"`
+}
+type GetTransactionResult struct {
+	Hash        string `json:"hash"`
+	Nonce       string `json:"nonce"`
+	BlockHash   string `json:"blockHash"`
+	BlockNumber string `json:"blockNumber"`
+	From        string `json:"from"`
+	To          string `json:"to"`
+	Value       string `json:"value"`
+	Gas         string `json:"gas"`
+	GasPrice    string `json:"gasPrice"`
+	Input       string `json:"input"`
+}
+
+//
+type GetErc20TxByHashParams struct {
+	Hash string `json:"hash"`
+}
+type GetErc20TxByHashResult struct {
+	Hash         string `json:"hash"`
+	Status       string `json:"status"`
+	BlockHash    string `json:"blockHash"`
+	BlockNumber  string `json:"blockNumber"`
+	ContractAddr string `json:"contractaddr"`
+	From         string `json:"from"`
+	To           string `json:"to"`
+	Amount       string `json:"amount"`
+}
+
+//
 type GetBestHeaderParams struct {
 	Number string `json:"Number"` //if empty, return the best header
 }
@@ -174,27 +210,6 @@ type GetBalanceResult struct {
 }
 func (aeth AdaptorETH) GetBalance(params string) string {
 	return GetBalance(params, &aeth.RPCParams, aeth.NetID)
-}
-
-//
-type GetTransactionParams struct {
-	Hash string `json:"hash"`
-}
-type GetTransactionResult struct {
-	Hash             string `json:"hash"`
-	Nonce            string `json:"nonce"`
-	BlockHash        string `json:"blockHash"`
-	BlockNumber      string `json:"blockNumber"`
-	TransactionIndex string `json:"transactionIndex"` //
-	From             string `json:"from"`
-	To               string `json:"to"`
-	Value            string `json:"value"`
-	Gas              string `json:"gas"`
-	GasPrice         string `json:"gasPrice"`
-	Input            string `json:"input"`
-}
-func (aeth AdaptorETH) GetTransactionByHash(params string) string {
-	return GetTransactionByHash(params, &aeth.RPCParams, aeth.NetID)
 }
 
 //
