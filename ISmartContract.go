@@ -1,3 +1,23 @@
+/*
+ *
+ *    This file is part of go-palletone.
+ *    go-palletone is free software: you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation, either version 3 of the License, or
+ *    (at your option) any later version.
+ *    go-palletone is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *    You should have received a copy of the GNU General Public License
+ *    along with go-palletone.  If not, see <http://www.gnu.org/licenses/>.
+ * /
+ *
+ *  * @author PalletOne core developer <dev@pallet.one>
+ *  * @date 2018-2019
+ *
+ */
+
 package adaptor
 
 type ISmartContract interface {
@@ -16,7 +36,7 @@ type ISmartContract interface {
 	//调用合约的查询方法
 	QueryContract(input *QueryContractInput) (*QueryContractOutput, error)
 	//销毁合约
-	// CreateContractDestoryTx(addr string, fee *AmountAsset, contractAddress string, args [][]byte, extra []byte) (tx []byte, err error)
+	// CreateContractDestoryTx(input *CreateContractDestoryTx) (tx []byte, err error)
 	// GetContractDestoryTxByTxId(txid []byte) (*ContractDestoryTx, error)
 }
 type CreateContractInstallTxInput struct {
@@ -66,7 +86,7 @@ type GetContractInstallTxInput struct {
 }
 type GetContractInstallTxOutput struct {
 	TxBasicInfo
-	TemplateId []byte `json:"template_id"`
+	TemplateID []byte `json:"template_id"`
 }
 type GetContractInitialTxInput struct {
 	TxID []byte `json:"tx_id"`
