@@ -5,6 +5,6 @@ import (
 )
 
 type AmountAsset struct {
-	Amount big.Int
-	Asset  string
+	Amount big.Int `json:"amount"`
+	Asset  string  `json:"asset"`
 }

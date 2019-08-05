@@ -24,56 +24,56 @@ type IUtility interface {
 type NewPrivateKeyInput struct {
 }
 type NewPrivateKeyOutput struct {
-	PrivateKey []byte
+	PrivateKey []byte `json:"private_key"`
 }
 type GetPublicKeyInput struct {
-	PrivateKey []byte
+	PrivateKey []byte `json:"private_key"`
 }
 type GetPublicKeyOutput struct {
-	PublicKey []byte
+	PublicKey []byte `json:"public_key"`
 }
 type GetAddressInput struct {
-	Key []byte
+	Key []byte `json:"key"`
 }
 type GetAddressOutput struct {
-	Address string
+	Address string `json:"address"`
 }
 type SignTransactionInput struct {
-	PrivateKey  []byte
-	Transaction []byte
-	Extra       []byte
+	PrivateKey  []byte `json:"private_key"`
+	Transaction []byte `json:"transaction"`
+	Extra       []byte `json:"extra"`
 }
 type SignTransactionOutput struct {
-	Signature []byte
-	Extra     []byte
+	Signature []byte `json:"signature"`
+	Extra     []byte `json:"extra"`
 }
 type BindTxAndSignatureInput struct {
-	Transaction []byte
-	Signs       [][]byte
-	Extra       []byte
+	Transaction []byte   `json:"transaction"`
+	Signs       [][]byte `json:"signs"`
+	Extra       []byte   `json:"extra"`
 }
 type BindTxAndSignatureOutput struct {
-	SignedTx []byte
-	Extra    []byte
+	SignedTx []byte `json:"signed_tx"`
+	Extra    []byte `json:"extra"`
 }
 type CalcTxHashInput struct {
-	Transaction []byte
-	Extra       []byte
+	Transaction []byte `json:"transaction"`
+	Extra       []byte `json:"extra"`
 }
 type CalcTxHashOutput struct {
-	Hash []byte
+	Hash []byte `json:"hash"`
 }
 type SendTransactionInput struct {
-	Transaction []byte
-	Fee         *AmountAsset
-	Extra       []byte
+	Transaction []byte       `json:"transaction"`
+	Fee         *AmountAsset `json:"fee"`
+	Extra       []byte       `json:"extra"`
 }
 type SendTransactionOutput struct {
-	TxID []byte
+	TxID []byte `json:"tx_id"`
 }
 type GetTxBasicInfoInput struct {
-	TxID []byte
+	TxID []byte `json:"tx_id"`
 }
 type GetTxBasicInfoOutput struct {
-	Tx TxBasicInfo
+	Tx TxBasicInfo `json:"transaction"`
 }
