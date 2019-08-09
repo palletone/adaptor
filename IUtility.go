@@ -28,7 +28,7 @@ type IUtility interface {
 	GetPublicKey(input *GetPublicKeyInput) (*GetPublicKeyOutput, error)
 	//根据Key创建地址
 	GetAddress(key *GetAddressInput) (*GetAddressOutput, error)
-	//根据原链的地址获得映射到PalletOne的地址
+	//获得原链的地址和PalletOne的地址的映射
 	GetPalletOneMappingAddress(addr *GetPalletOneMappingAddressInput) (*GetPalletOneMappingAddressOutput, error)
 	//对一条消息进行签名
 	SignMessage(input *SignMessageInput) (*SignMessageOutput, error)
@@ -66,9 +66,11 @@ type GetAddressOutput struct {
 }
 type GetPalletOneMappingAddressInput struct {
 	PalletOneAddress string `json:"palletone_address"`
+	ChainAddress     string `json:"chain_address"`
 }
 type GetPalletOneMappingAddressOutput struct {
-	Address string `json:"address"`
+	PalletOneAddress string `json:"palletone_address"`
+	ChainAddress     string `json:"chain_address"`
 }
 type SignMessageInput struct {
 	PrivateKey []byte `json:"private_key"`
