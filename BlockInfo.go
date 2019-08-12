@@ -20,6 +20,7 @@
 
 package adaptor
 
+//BlockInfo 区块的基本信息
 type BlockInfo struct {
 	BlockID         []byte `json:"block_id"`         //交易被打包到了哪个区块ID
 	BlockHeight     uint   `json:"block_height"`     //交易被打包到的区块的高度

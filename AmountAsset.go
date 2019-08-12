@@ -24,7 +24,8 @@ import (
 	"math/big"
 )
 
+//AmountAsset Token的金额和资产标识
 type AmountAsset struct {
-	Amount big.Int `json:"amount"`
-	Asset  string  `json:"asset"`
+	Amount big.Int `json:"amount"` //金额，最小单位
+	Asset  string  `json:"asset"`  //资产标识
 }

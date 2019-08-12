@@ -20,6 +20,7 @@
 
 package adaptor
 
+//TxBasicInfo 一个交易的基本信息
 type TxBasicInfo struct {
 	TxID           []byte `json:"tx_id"`           //交易的ID，Hash
 	TxRawData      []byte `json:"tx_raw"`          //交易的二进制数据

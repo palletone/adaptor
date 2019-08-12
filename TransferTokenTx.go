@@ -20,7 +20,7 @@
 
 package adaptor
 
-//一个简单的Token转账交易
+//SimpleTransferTokenTx 一个简单的Token转账交易
 type SimpleTransferTokenTx struct {
 	TxBasicInfo
 	FromAddress string       `json:"from_address"` //转出地址
