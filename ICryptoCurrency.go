@@ -35,20 +35,24 @@ type ICryptoCurrency interface {
 	//创建一个多签地址，该地址必须要满足signCount个签名才能解锁
 	CreateMultiSigAddress(input *CreateMultiSigAddressInput) (*CreateMultiSigAddressOutput, error)
 }
+
 //查询余额时的输入参数
 type GetBalanceInput struct {
 	Address string `json:"address"`
 	Asset   string `json:"asset"`
 }
+
 //查询余额的返回值
 type GetBalanceOutput struct {
 	Balance AmountAsset `json:"balance"`
 }
+
 //获得某种资产小数位数时的输入
 type GetAssetDecimalInput struct {
 	Asset string `json:"asset"`
 	Extra []byte `json:"extra"`
 }
+
 //获得的资产的小数位数
 type GetAssetDecimalOutput struct {
 	Decimal uint `json:"decimal"`
@@ -58,6 +62,7 @@ type CreateTransferTokenTxInput struct {
 	ToAddress   string       `json:"to_address"`
 	Amount      *AmountAsset `json:"amount"`
 	Fee         *AmountAsset `json:"fee"`
+	Extra       []byte       `json:"extra"`
 }
 type CreateTransferTokenTxOutput struct {
 	Transaction []byte `json:"transaction"`
