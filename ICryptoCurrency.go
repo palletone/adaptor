@@ -22,6 +22,7 @@ package adaptor
 
 //ICryptoCurrency 加密货币相关的API
 type ICryptoCurrency interface {
+	IUtility
 	//获取某地址下持有某资产的数量,返回数量为该资产的最小单位
 	GetBalance(input *GetBalanceInput) (*GetBalanceOutput, error)
 	//获取某资产的小数点位数
