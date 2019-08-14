@@ -20,6 +20,10 @@
 
 package adaptor
 
+import (
+	"encoding/json"
+)
+
 //BlockInfo 区块的基本信息
 type BlockInfo struct {
 	BlockID         []byte `json:"block_id"`         //交易被打包到了哪个区块ID
@@ -30,4 +34,9 @@ type BlockInfo struct {
 	TxsRoot         []byte `json:"txs_root"`         //默克尔根
 	ProducerAddress string `json:"producer_address"` //生产者地址
 	IsStable        bool   `json:"is_stable"`        //是否已经稳定不可逆
+}
+
+func (block *BlockInfo) String() string {
+	d, _ := json.Marshal(block)
+	return string(d)
 }

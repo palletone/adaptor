@@ -50,7 +50,7 @@ type GetBalanceOutput struct {
 
 //获得某种资产小数位数时的输入
 type GetAssetDecimalInput struct {
-	Asset string `json:"asset"`
+	Asset string `json:"asset"` //资产标识
 	Extra []byte `json:"extra"`
 }
 
@@ -71,9 +71,9 @@ type CreateTransferTokenTxOutput struct {
 type GetAddrTxHistoryInput struct {
 	FromAddress       string `json:"from_address"` //转账的付款方地址
 	ToAddress         string `json:"to_address"`   //转账的收款方地址
-	Asset             string `json:"asset"`
-	PageSize          uint32 `json:"page_size"`
-	PageIndex         uint32 `json:"page_index"`
+	Asset             string `json:"asset"` //资产标识
+	PageSize          uint32 `json:"page_size"` //分页大小，0表示不分页
+	PageIndex         uint32 `json:"page_index"` //分页后的第几页数据
 	AddressLogicAndOr bool   `json:"address_logic_and_or"` //付款地址,收款地址是And=1关系还是Or=0关系
 	Asc               bool   `json:"asc"`                  //按时间顺序从老到新
 }

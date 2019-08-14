@@ -21,6 +21,7 @@
 package adaptor
 
 import (
+	"fmt"
 	"math/big"
 )
 
@@ -28,4 +29,8 @@ import (
 type AmountAsset struct {
 	Amount big.Int `json:"amount"` //金额，最小单位
 	Asset  string  `json:"asset"`  //资产标识
+}
+
+func (aa *AmountAsset) String() string {
+	return fmt.Sprintf("%s %s", aa.Amount.String(), aa.Asset)
 }
