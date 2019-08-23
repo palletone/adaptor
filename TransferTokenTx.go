@@ -55,7 +55,7 @@ func setSimpleTransferTokenTxFromJson(tx *SimpleTransferTokenTx, tx4json simpleT
 	tx.ToAddress = tx4json.ToAddress
 	tx.Amount = tx4json.Amount
 	tx.Fee = tx4json.Fee
-	tx.AttachData = []byte(tx4json.AttachData)
+	tx.AttachData, _ = hex.DecodeString(tx4json.AttachData)
 }
 func convertSimpleTransferTokenTx2Json(tx SimpleTransferTokenTx) simpleTransferTokenTx4Json {
 	tx4Json := simpleTransferTokenTx4Json{}

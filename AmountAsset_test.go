@@ -28,9 +28,14 @@ import (
 
 func TestAmountAssetToString(t *testing.T) {
 	big1, _ := new(big.Int).SetString("1000000000000000000000", 10)
-	aa := &AmountAsset{Amount: *big1, Asset: "ETH"}
+	aa := &AmountAsset{Amount: big1, Asset: "ETH"}
 	t.Logf("aa:%s", aa.String())
 	data, err := json.Marshal(aa)
 	assert.Nil(t, err)
 	t.Logf("Json data:%s", string(data))
+
+	aa2 := NewAmountAssetUint64(1234567890, "PTN")
+	t.Logf("String data:%s", aa2.String())
+	aa3 := NewAmountAsset(big1, "ABC")
+	t.Logf("String data:%s", aa3.String())
 }

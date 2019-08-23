@@ -27,21 +27,21 @@ import (
 
 //AmountAsset Token的金额和资产标识
 type AmountAsset struct {
-	Amount big.Int `json:"amount"` //金额，最小单位
-	Asset  string  `json:"asset"`  //资产标识
+	Amount *big.Int `json:"amount"` //金额，最小单位
+	Asset  string   `json:"asset"`  //资产标识
 }
 
 func (aa *AmountAsset) String() string {
 	return fmt.Sprintf("%s %s", aa.Amount.String(), aa.Asset)
 }
-func NewAmountAsset(amount big.Int, asset string) *AmountAsset {
+func NewAmountAsset(amount *big.Int, asset string) *AmountAsset {
 	return &AmountAsset{
 		Amount: amount,
 		Asset:  asset,
 	}
 }
 func NewAmountAssetUint64(amount uint64, asset string) *AmountAsset {
-	a := big.Int{}
+	a := new(big.Int)
 	a.SetUint64(amount)
 	return &AmountAsset{
 		Amount: a,
