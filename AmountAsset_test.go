@@ -39,3 +39,10 @@ func TestAmountAssetToString(t *testing.T) {
 	aa3 := NewAmountAsset(big1, "ABC")
 	t.Logf("String data:%s", aa3.String())
 }
+func TestAmountAssetFromString(t *testing.T) {
+	amt1:=NewAmountAssetString("1234567900000000000","ETH")
+	assert.NotNil(t,amt1)
+	t.Log(amt1.String())
+	amt2:=NewAmountAssetString("ABCXYZ","ETH")
+	assert.Nil(t,amt2)
+}

@@ -48,3 +48,14 @@ func NewAmountAssetUint64(amount uint64, asset string) *AmountAsset {
 		Asset:  asset,
 	}
 }
+func NewAmountAssetString(amount string, asset string) *AmountAsset {
+	amt:=new(big.Int)
+	amt,pass:= amt.SetString(amount, 10)
+	if !pass{
+		return nil
+	}
+	return &AmountAsset{
+		Amount: amt,
+		Asset:  asset,
+	}
+}
