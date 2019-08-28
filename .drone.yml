@@ -4,7 +4,8 @@ steps:
   - name: test
     image: golang
     commands:
-      - go test .
+      - go get github.com/mattn/goveralls
+      - goveralls -service drone.io
   - name: lint
     image: golang
     commands:
